@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hammaad Ahmad Khalid — Developer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy:    #0D1B2A;
+    --ink:     #111827;
+    --blue:    #1A5276;
+    --mid:     #2980B9;
+    --sky:     #AED6F1;
+    --ice:     #EBF5FB;
+    --white:   #FAFBFC;
+    --warm:    #F5F0EB;
+    --gold:    #C9A84C;
+    --muted:   #6B7280;
+    --border:  #D1D9E0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 60px;
+    background: rgba(13,27,42,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--sky);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--sky); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 80% 50%, rgba(41,128,185,0.14) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 20% 80%, rgba(26,82,118,0.2) 0%, transparent 60%);
+  }
+  .hero-grid-overlay {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(174,214,241,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(174,214,241,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 140px 60px 80px 80px;
+    position: relative; z-index: 2;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding: 6px 14px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+    width: fit-content;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 10px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sky);
+  }
+  .hero-subtitle {
+    font-size: 0.95rem;
+    color: rgba(174,214,241,0.75);
+    margin-bottom: 36px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .hero-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    max-width: 400px;
+    line-height: 1.8;
+    margin-bottom: 44px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 400;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--mid);
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 28px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--blue); transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1px solid rgba(174,214,241,0.35);
+    color: var(--sky);
+    text-decoration: none;
+    padding: 13px 28px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--sky); background: rgba(174,214,241,0.07); }
+
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 2;
+    padding: 120px 60px 80px 20px;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(174,214,241,0.12);
+    border-radius: 8px;
+    padding: 36px;
+    width: 100%;
+    max-width: 380px;
+    backdrop-filter: blur(8px);
+  }
+  .hero-card-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .stat-row {
+    display: flex; justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.4); font-weight: 500; }
+  .stat-val { font-size: 0.82rem; color: var(--sky); font-weight: 700; font-family: 'DM Mono', monospace; }
+
+  /* ── SECTION WRAPPER ── */
+  .section { padding: 100px 80px; }
+  .section-alt { background: var(--warm); }
+  .section-dark { background: var(--navy); color: var(--white); }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 12px;
+  }
+  .section-dark .section-label { color: var(--sky); }
+  .section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 56px;
+  }
+  .section-dark h2 { color: var(--white); }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .skill-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(13,27,42,0.1); }
+  .skill-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--mid));
+    border-radius: 6px 6px 0 0;
+  }
+  .skill-cat {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 10px;
+    font-family: 'DM Mono', monospace;
+  }
+  .skill-list {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.85;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .project-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(174,214,241,0.1);
+    border-radius: 8px;
+    padding: 36px;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--mid), transparent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .project-card:hover { border-color: rgba(174,214,241,0.3); transform: translateY(-3px); }
+  .project-card:hover::after { transform: scaleX(1); }
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    align-items: start;
+  }
+  .project-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+  }
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .project-desc {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+    margin-bottom: 22px;
+  }
+  .project-highlights {
+    list-style: none;
+    margin-bottom: 26px;
+  }
+  .project-highlights li {
+    font-size: 0.8rem;
+    color: rgba(174,214,241,0.7);
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .project-highlights li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--gold);
+    font-size: 0.65rem;
+    top: 7px;
+  }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .tech-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    padding: 4px 10px;
+    border: 1px solid rgba(174,214,241,0.2);
+    border-radius: 2px;
+    color: rgba(174,214,241,0.65);
+    letter-spacing: 0.05em;
+  }
+  .project-links { display: flex; gap: 14px; }
+  .project-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 2px;
+  }
+  .project-link.live { background: var(--mid); color: #fff; }
+  .project-link.live:hover { background: var(--blue); }
+  .project-link.code { border: 1px solid rgba(174,214,241,0.25); color: var(--sky); }
+  .project-link.code:hover { border-color: var(--sky); }
+
+  /* ── EXPERIENCE ── */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px;
+    background: linear-gradient(to bottom, var(--mid), transparent);
+  }
+  .timeline-item {
+    padding-left: 36px;
+    padding-bottom: 52px;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -5px; top: 8px;
+    width: 12px; height: 12px;
+    background: var(--mid);
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 3px rgba(41,128,185,0.25);
+  }
+  .tl-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--mid);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .tl-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .tl-company {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .tl-bullets { list-style: none; }
+  .tl-bullets li {
+    font-size: 0.84rem;
+    color: #4B5563;
+    padding: 4px 0 4px 18px;
+    position: relative;
+    line-height: 1.75;
+  }
+  .tl-bullets li::before {
+    content: '–';
+    position: absolute; left: 0;
+    color: var(--mid);
+  }
+
+  /* ── AI / AUTOMATION ── */
+  .ai-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .ai-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .ai-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(13,27,42,0.08); }
+  .ai-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .ai-card h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .ai-card p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .contact-intro {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.85;
+    margin-bottom: 36px;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 16px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none;
+    padding: 16px 20px;
+    border: 1px solid rgba(174,214,241,0.12);
+    border-radius: 5px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: rgba(174,214,241,0.3); background: rgba(174,214,241,0.04); }
+  .contact-link-icon { font-size: 1.1rem; width: 24px; text-align: center; }
+  .contact-link-text { flex: 1; }
+  .contact-link-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--sky); font-family: 'DM Mono', monospace; margin-bottom: 2px; }
+  .contact-link-val { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
+
+  .contact-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(174,214,241,0.12);
+    border-radius: 8px;
+    padding: 36px;
+  }
+  .contact-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .contact-card p {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+  .open-to { display: flex; flex-wrap: wrap; gap: 10px; }
+  .open-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    padding: 6px 14px;
+    background: rgba(41,128,185,0.15);
+    border: 1px solid rgba(41,128,185,0.3);
+    border-radius: 2px;
+    color: var(--sky);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080f18;
+    padding: 32px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  footer p { font-size: 0.75rem; color: rgba(255,255,255,0.3); font-family: 'DM Mono', monospace; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * { animation: fadeUp 0.7s ease both; }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.22s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.34s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.44s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.54s; }
+  .hero-right { animation: fadeUp 0.8s 0.5s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { gap: 20px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 120px 24px 40px; }
+    .hero-right { display: none; }
+    .section { padding: 72px 24px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .ai-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 12px; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">HAK.</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#ai">AI & Automation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-left">
+    <span class="hero-tag">Available for Senior Roles</span>
+    <h1>Hammaad<br/><em>Ahmad Khalid</em></h1>
+    <p class="hero-subtitle">Senior Full Stack PHP Developer &nbsp;·&nbsp; Laravel & SaaS Architect &nbsp;·&nbsp; AI & Automation Engineer</p>
+    <p class="hero-desc">4+ years building production-grade SaaS platforms, IoT management systems, and AI-powered web applications. Currently Core Developer at Cloud Services, Islamabad.</p>
+    <div class="hero-ctas">
+      <a href="mailto:ahmadkhalidhammaad@gmail.com" class="btn-primary">Get In Touch</a>
+      <a href="https://github.com/HammaadAKhalid" target="_blank" class="btn-ghost">View GitHub</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-title">// quick.stats</div>
+      <div class="stat-row">
+        <span class="stat-label">Experience</span>
+        <span class="stat-val">4+ Years</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Projects Delivered</span>
+        <span class="stat-val">15+</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Primary Stack</span>
+        <span class="stat-val">PHP / Laravel</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">AI & Automation</span>
+        <span class="stat-val">N8N · Make · Python</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Location</span>
+        <span class="stat-val">Islamabad, PK</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Open To</span>
+        <span class="stat-val">On-site · Remote</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-label">// 01 — Technical Expertise</div>
+  <h2>What I Build With</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-cat">Backend</div>
+      <div class="skill-list">PHP (Core &amp; Laravel 8–11) &nbsp;·&nbsp; MVC Architecture &nbsp;·&nbsp; RESTful API Design &nbsp;·&nbsp; Middleware &nbsp;·&nbsp; Queue Jobs &nbsp;·&nbsp; Events &amp; Listeners &nbsp;·&nbsp; Laravel Sanctum &amp; Passport</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Frontend</div>
+      <div class="skill-list">HTML5 &nbsp;·&nbsp; CSS3 &nbsp;·&nbsp; Bootstrap 5 &nbsp;·&nbsp; JavaScript (ES6+) &nbsp;·&nbsp; jQuery &nbsp;·&nbsp; AJAX &nbsp;·&nbsp; Blade Templates &nbsp;·&nbsp; Vue.js (working knowledge)</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Databases</div>
+      <div class="skill-list">MySQL &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Schema Design &nbsp;·&nbsp; Query Optimisation &nbsp;·&nbsp; Indexing &nbsp;·&nbsp; Relational Modelling &nbsp;·&nbsp; Eloquent ORM</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">SaaS & Cloud</div>
+      <div class="skill-list">SaaS Multi-Tenancy &nbsp;·&nbsp; RBAC &nbsp;·&nbsp; AWS (EC2, S3) &nbsp;·&nbsp; cPanel &nbsp;·&nbsp; VPS Hosting &nbsp;·&nbsp; CI/CD Pipelines &nbsp;·&nbsp; Docker (basic)</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">AI & Automation</div>
+      <div class="skill-list">Python &nbsp;·&nbsp; Machine Learning (scikit-learn) &nbsp;·&nbsp; Pandas &amp; NumPy &nbsp;·&nbsp; N8N &nbsp;·&nbsp; Make.com &nbsp;·&nbsp; OpenAI API &nbsp;·&nbsp; Anthropic Claude API &nbsp;·&nbsp; Vibe Coding</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">DevOps & Tools</div>
+      <div class="skill-list">Git &amp; GitHub &nbsp;·&nbsp; Postman &nbsp;·&nbsp; VS Code &nbsp;·&nbsp; XAMPP &nbsp;·&nbsp; phpMyAdmin &nbsp;·&nbsp; Webhook Integration &nbsp;·&nbsp; API Documentation</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section section-dark" id="projects">
+  <div class="section-label">// 02 — Selected Work</div>
+  <h2>Projects & Highlights</h2>
+  <div class="projects-grid">
+
+    <!-- FEATURED: IoT -->
+    <div class="project-card featured">
+      <div>
+        <div class="project-number">01 &nbsp;·&nbsp; FEATURED</div>
+        <div class="project-title">IoT Device Management Platform</div>
+        <div class="project-desc">A production-grade Laravel SaaS platform handling real-time telemetry ingestion, multi-tenant data isolation, and dynamic alerting across an entire IoT device fleet. Core product at Cloud Services.</div>
+        <div class="tech-tags">
+          <span class="tech-tag">Laravel</span>
+          <span class="tech-tag">MySQL</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">REST API</span>
+          <span class="tech-tag">RBAC</span>
+          <span class="tech-tag">AWS</span>
+          <span class="tech-tag">WebSockets</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/HammaadAKhalid" class="project-link code" target="_blank">GitHub Profile</a>
+        </div>
+      </div>
+      <div>
+        <ul class="project-highlights">
+          <li>Architected multi-tenant SaaS layer with per-tenant data isolation and shared application infrastructure</li>
+          <li>Designed scalable PostgreSQL schema supporting high-volume concurrent device connections with optimised time-series queries</li>
+          <li>Implemented granular RBAC with admin &amp; user privilege tiers and full audit trail logging</li>
+          <li>Built real-time telemetry pipeline — devices push data via REST API, processed through Laravel queues, visualised on live dashboards</li>
+          <li>Secure RESTful API consumed by IoT devices, mobile clients, and third-party systems</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CRM -->
+    <div class="project-card">
+      <div class="project-number">02</div>
+      <div class="project-title">CRM Web Application</div>
+      <div class="project-desc">Full-cycle CRM featuring lead capture, pipeline management, customer profiles, activity logging, and exportable analytics — with third-party email automation integration.</div>
+      <div class="tech-tags">
+        <span class="tech-tag">Laravel</span>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">AJAX</span>
+        <span class="tech-tag">REST API</span>
+        <span class="tech-tag">Bootstrap</span>
+      </div>
+      <ul class="project-highlights">
+        <li>Lead pipeline with stages, assignment, and follow-up reminders</li>
+        <li>Third-party email automation API reducing manual overhead significantly</li>
+        <li>Exportable reports with date-range filters and CSV output</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://github.com/HammaadAKhalid" class="project-link code" target="_blank">GitHub Profile</a>
+      </div>
+    </div>
+
+    <!-- AI Automation -->
+    <div class="project-card">
+      <div class="project-number">03</div>
+      <div class="project-title">AI & Automation Projects</div>
+      <div class="project-desc">Suite of N8N/Make.com automation workflows and Python-based data science pipelines, with OpenAI and Claude API integrations powering intelligent web features.</div>
+      <div class="tech-tags">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">N8N</span>
+        <span class="tech-tag">Make.com</span>
+        <span class="tech-tag">OpenAI API</span>
+        <span class="tech-tag">scikit-learn</span>
+      </div>
+      <ul class="project-highlights">
+        <li>Multi-step N8N workflows connecting CRMs, email platforms, and external APIs</li>
+        <li>Claude &amp; OpenAI API integrated for content generation and data extraction</li>
+        <li>Pandas + scikit-learn pipelines for predictive business analytics</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://github.com/HammaadAKhalid" class="project-link code" target="_blank">GitHub Profile</a>
+      </div>
+    </div>
+
+    <!-- Laravel CMS -->
+    <div class="project-card">
+      <div class="project-number">04</div>
+      <div class="project-title">Laravel CMS & Inventory System</div>
+      <div class="project-desc">A full-featured content management system built in Laravel following strict MVC architecture, paired with a relational inventory management module.</div>
+      <div class="tech-tags">
+        <span class="tech-tag">Laravel</span>
+        <span class="tech-tag">PHP</span>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">Bootstrap</span>
+        <span class="tech-tag">AJAX</span>
+      </div>
+      <ul class="project-highlights">
+        <li>Post lifecycle (create, edit, delete, comment) with middleware-based route protection</li>
+        <li>Inventory CRUD with dynamic dashboards and category management</li>
+        <li>Pagination, form validation, and role-based access throughout</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://github.com/HammaadAKhalid" class="project-link code" target="_blank">GitHub Profile</a>
+      </div>
+    </div>
+
+    <!-- User Management -->
+    <div class="project-card">
+      <div class="project-number">05</div>
+      <div class="project-title">User Management System</div>
+      <div class="project-desc">Complete authentication and authorisation system in Core PHP — login, registration, role-based access (Admin/User), profile management, and password recovery.</div>
+      <div class="tech-tags">
+        <span class="tech-tag">Core PHP</span>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">Bootstrap</span>
+        <span class="tech-tag">Session Handling</span>
+      </div>
+      <ul class="project-highlights">
+        <li>Hashed passwords, input validation, and XSS/CSRF hardening</li>
+        <li>Admin panel with full user CRUD and role assignment</li>
+        <li>Password recovery with secure token-based email flow</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://github.com/HammaadAKhalid" class="project-link code" target="_blank">GitHub Profile</a>
+      </div>
+    </div>
+
+    <!-- Contact & Lead -->
+    <div class="project-card">
+      <div class="project-number">06</div>
+      <div class="project-title">Lead Capture & Management App</div>
+      <div class="project-desc">PHP web application to collect, store, and manage customer leads with admin-side filtering, AJAX-powered form submission, and MySQL-backed storage.</div>
+      <div class="tech-tags">
+        <span class="tech-tag">PHP</span>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">AJAX</span>
+        <span class="tech-tag">jQuery</span>
+        <span class="tech-tag">Bootstrap</span>
+      </div>
+      <ul class="project-highlights">
+        <li>AJAX form submission with real-time validation — zero page reloads</li>
+        <li>Admin dashboard with lead filtering, status tracking, and export</li>
+        <li>Relational MySQL schema with timestamps and source tracking</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://github.com/HammaadAKhalid" class="project-link code" target="_blank">GitHub Profile</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section section-alt" id="experience">
+  <div class="section-label">// 03 — Career Timeline</div>
+  <h2>Professional Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-date">June 2025 – Present</div>
+      <div class="tl-title">Core Full Stack PHP Developer</div>
+      <div class="tl-company">Cloud Services &nbsp;·&nbsp; Islamabad, Pakistan &nbsp;·&nbsp; Full-Time</div>
+      <ul class="tl-bullets">
+        <li>Lead architect and developer on a production Laravel IoT device management SaaS platform</li>
+        <li>Designed and enforced granular RBAC system across all application modules</li>
+        <li>Own the complete data layer — schema design, indexing, and query optimisation at scale</li>
+        <li>Built and maintained a full-cycle CRM application with third-party API integrations</li>
+        <li>Integrated AI-assisted development workflows (Claude API, GitHub Copilot)</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">September 2023 – July 2025</div>
+      <div class="tl-title">PHP Developer (Remote)</div>
+      <div class="tl-company">SKILLSCaper &nbsp;·&nbsp; France &nbsp;·&nbsp; Remote</div>
+      <ul class="tl-bullets">
+        <li>Developed and maintained multiple Laravel web applications for international clients</li>
+        <li>Built secure authentication systems, RESTful APIs, and complex CRUD modules</li>
+        <li>Optimised MySQL schemas, reducing slow query execution significantly</li>
+        <li>Conducted code reviews and contributed to elevating team-wide standards</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2021 – September 2023</div>
+      <div class="tl-title">Freelance PHP Developer</div>
+      <div class="tl-company">Self-Employed &nbsp;·&nbsp; Islamabad, Pakistan</div>
+      <ul class="tl-bullets">
+        <li>Delivered 10+ PHP/Laravel applications across e-commerce, inventory, and CMS verticals</li>
+        <li>Designed normalised relational database schemas and deployed applications via cPanel</li>
+        <li>Initiated self-driven learning in Python, machine learning, and AI automation tools</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- AI & AUTOMATION -->
+<section class="section" id="ai">
+  <div class="section-label">// 04 — Beyond PHP</div>
+  <h2>AI & Automation Capabilities</h2>
+  <div class="ai-grid">
+    <div class="ai-card">
+      <span class="ai-icon">🤖</span>
+      <h4>LLM API Integration</h4>
+      <p>Integrating OpenAI GPT and Anthropic Claude APIs into production web apps for intelligent content generation, data extraction, and chatbot features.</p>
+    </div>
+    <div class="ai-card">
+      <span class="ai-icon">⚡</span>
+      <h4>Workflow Automation</h4>
+      <p>Building complex multi-step automation workflows in N8N and Make.com — connecting CRMs, email platforms, databases, and external APIs without manual intervention.</p>
+    </div>
+    <div class="ai-card">
+      <span class="ai-icon">🐍</span>
+      <h4>Python & Data Science</h4>
+      <p>Developing data pipelines and ML models using Pandas, NumPy, and scikit-learn for predictive analytics and business intelligence reporting.</p>
+    </div>
+    <div class="ai-card">
+      <span class="ai-icon">🔗</span>
+      <h4>API & Webhook Integration</h4>
+      <p>End-to-end third-party API and webhook integration — payment gateways, notification services, data providers — built into Laravel applications with full error handling.</p>
+    </div>
+    <div class="ai-card">
+      <span class="ai-icon">🧠</span>
+      <h4>Vibe Coding</h4>
+      <p>Practitioner of AI-assisted development (GitHub Copilot, Claude) to accelerate feature delivery, write better tests, and maintain higher code quality standards.</p>
+    </div>
+    <div class="ai-card">
+      <span class="ai-icon">📊</span>
+      <h4>IoT Data Pipelines</h4>
+      <p>Designing real-time data ingestion pipelines for IoT devices in Laravel — telemetry collection, queue processing, time-series storage, and live dashboard visualisation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-dark" id="contact">
+  <div class="section-label">// 05 — Let's Work Together</div>
+  <h2>Get In Touch</h2>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">I'm currently open to senior full-stack and SaaS developer roles — on-site in Islamabad or remote. If you're building something ambitious with Laravel, need a developer who bridges backend architecture with AI/automation, or want someone who takes ownership end-to-end, let's talk.</p>
+      <div class="contact-links">
+        <a href="mailto:ahmadkhalidhammaad@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          <div class="contact-link-text">
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-val">ahmadkhalidhammaad@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+923009005223" class="contact-link">
+          <span class="contact-link-icon">📞</span>
+          <div class="contact-link-text">
+            <div class="contact-link-label">Phone</div>
+            <div class="contact-link-val">+92-300-9005223</div>
+          </div>
+        </a>
+        <a href="https://github.com/HammaadAKhalid" target="_blank" class="contact-link">
+          <span class="contact-link-icon">⌥</span>
+          <div class="contact-link-text">
+            <div class="contact-link-label">GitHub</div>
+            <div class="contact-link-val">github.com/HammaadAKhalid</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/hammaad-ahmad-khalid" target="_blank" class="contact-link">
+          <span class="contact-link-icon">in</span>
+          <div class="contact-link-text">
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-val">linkedin.com/in/hammaad-ahmad-khalid</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <h3>Open to Opportunities</h3>
+      <p>Whether it's a senior developer role, a technical lead position, or a challenging SaaS product — I'm interested in conversations about impactful work.</p>
+      <div class="open-to">
+        <span class="open-tag">Senior PHP / Laravel</span>
+        <span class="open-tag">SaaS Architecture</span>
+        <span class="open-tag">Full Stack</span>
+        <span class="open-tag">IoT Platforms</span>
+        <span class="open-tag">AI Integration</span>
+        <span class="open-tag">Remote</span>
+        <span class="open-tag">On-site Islamabad</span>
+        <span class="open-tag">Tech Lead</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Hammaad Ahmad Khalid &nbsp;·&nbsp; Islamabad, Pakistan</p>
+  <p>ahmadkhalidhammaad@gmail.com &nbsp;·&nbsp; +92-300-9005223</p>
+</footer>
+
+</body>
+</html>
